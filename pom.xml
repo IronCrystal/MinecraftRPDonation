@@ -24,7 +24,7 @@
 			<version>LATEST</version>
 			<scope>system</scope>
 			<type>jar</type>
-			<systemPath>C:\Users\Andrew Peace\Minecraft\Minecraft Serverside\Servers\MinecraftRP\plugins\MinecraftRP.jar</systemPath>
+			<systemPath>${project.basedir}/MinecraftRP.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
