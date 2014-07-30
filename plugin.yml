@@ -1,0 +1,6 @@
+name: MinecraftRPDonation
+main: ironcrystal.minecraftrpdonation.MinecraftRPDonation
+version: 1.0
+commands:
+  sellhead:
+    description: Sell a head
