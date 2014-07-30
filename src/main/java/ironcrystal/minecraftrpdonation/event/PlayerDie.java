@@ -1,10 +1,9 @@
 package ironcrystal.minecraftrpdonation.event;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ironcrystal.minecraftrpdonation.MinecraftRPDonation;
 import ironcrystal.minecraftrpdonation.scheduler.CheckIfPlayerIsDead;
+
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Arrow;
@@ -15,7 +14,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
 public class PlayerDie implements Listener {
@@ -23,8 +21,6 @@ public class PlayerDie implements Listener {
 	public PlayerDie(MinecraftRPDonation main) {
 		this.main = main;
 	}
-
-	private List<Player> players = new ArrayList<Player>();
 
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onPlayerDie(EntityDamageByEntityEvent event) {
@@ -46,8 +42,6 @@ public class PlayerDie implements Listener {
 						for (Entity e : entities) {
 							if (e instanceof Player) {
 								Player p = (Player) e;
-								p.getName();
-								victim.setHealth(0);
 								EntityDamageByEntityEvent playerEvent = new EntityDamageByEntityEvent(p, victim, DamageCause.ENTITY_ATTACK, victim.getHealth()); // Create the event here
 								Bukkit.getServer().getPluginManager().callEvent(playerEvent);  // Call the event
 							}
@@ -55,12 +49,6 @@ public class PlayerDie implements Listener {
 					}
 				}
 			}
-		}
-	}
-	@EventHandler(priority = EventPriority.HIGH)
-	public void onPlayerDeath(PlayerDeathEvent event) {
-		if (players.contains(event.getEntity())) {
-			event.setDeathMessage(event.getEntity().getName() + " died!");
 		}
 	}
 }
