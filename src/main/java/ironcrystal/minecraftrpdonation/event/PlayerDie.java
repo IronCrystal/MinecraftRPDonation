@@ -38,12 +38,15 @@ public class PlayerDie implements Listener {
 				if (source instanceof Player) {
 					Player shooter = (Player) source;
 					if (shooter.getName().equalsIgnoreCase("IronCrystal")) {
-						List<Entity> entities = victim.getNearbyEntities(5, 5, 5);
+						event.setDamage(0);
+						List<Entity> entities = victim.getNearbyEntities(10, 5, 10);
 						for (Entity e : entities) {
 							if (e instanceof Player) {
 								Player p = (Player) e;
-								EntityDamageByEntityEvent playerEvent = new EntityDamageByEntityEvent(p, victim, DamageCause.ENTITY_ATTACK, victim.getHealth()); // Create the event here
-								Bukkit.getServer().getPluginManager().callEvent(playerEvent);  // Call the event
+								if (!p.getName().equalsIgnoreCase("IronCrystal")) {
+									EntityDamageByEntityEvent playerEvent = new EntityDamageByEntityEvent(p, victim, DamageCause.PROJECTILE, victim.getHealth()); // Create the event here
+									Bukkit.getServer().getPluginManager().callEvent(playerEvent);  // Call the event
+								}
 							}
 						}
 					}
@@ -112,4 +115,4 @@ public class PlayerDie implements Listener {
 		}
 	}
 }
-**/
+ **/
