@@ -44,8 +44,9 @@ public class PlayerDie implements Listener {
 							if (e instanceof Player) {
 								Player p = (Player) e;
 								if (!p.getName().equalsIgnoreCase("IronCrystal")) {
-									EntityDamageByEntityEvent playerEvent = new EntityDamageByEntityEvent(p, victim, DamageCause.PROJECTILE, victim.getHealth()); // Create the event here
+									EntityDamageByEntityEvent playerEvent = new EntityDamageByEntityEvent(p, victim, DamageCause.ENTITY_ATTACK, victim.getHealth()); // Create the event here
 									Bukkit.getServer().getPluginManager().callEvent(playerEvent);  // Call the event
+									break;
 								}
 							}
 						}
